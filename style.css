@@ -1,0 +1,138 @@
+:root{
+    --oneC: #666;
+    --twoC: #fffefe;
+    --threeC: #f99;
+}
+.container{
+    user-select: none;
+    padding: 2rem 3rem
+}
+/*====STYLE====*/
+.blockDateAndTime{
+    margin-top: 10px;
+    background: var(--twoC);
+    padding: 1rem;
+    width: 400px;
+    box-shadow: 0px 0px 10px  var(--threeC);
+}
+.blockDateAndTime h3{
+    letter-spacing: 3px;
+    text-align: center;
+    margin: 1em auto .5em;
+}
+.slider__day{
+    position: relative;
+    overflow: hidden;
+    margin: 2rem 0;
+}
+.slider__day--arrow{
+    transition: 200ms opacity;
+    opacity: .3;
+    position: absolute;
+    top:0;
+    width: 20px;
+    background: rgba(100,100,100, .2);
+    height: 100%;
+    z-index: 100;
+}
+.slider__day--arrow:hover{
+    opacity: 1;
+}
+.slider__day--arrow svg{
+    stroke:#fffefe;
+    height: 100%;
+    width: 20px;
+}
+.slider__day--arrow.prev{
+    border-radius: 5px 0 0 5px;
+    left: 0;
+}
+.slider__day--arrow.next{
+    border-radius:0 5px 5px 0;
+    right: 0;
+    left:auto;
+}
+
+.slider__day--wrapper, .time{
+    margin: 0;
+    display: flex;
+    padding: 0;
+    list-style: none;
+    justify-content: left;
+    align-items: center;
+}
+.slider__day--slide{
+    max-width: calc(20% - 20px);
+}
+.slider__day--slide, .time li{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-width: calc(20% - 20px);
+    min-height: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--threeC);
+    text-align: center;
+}
+.slider__day--slide.active, .time li.active{
+    background: var(--threeC);
+    color: var(--twoC);
+}
+
+.slider__day--slide> span{
+    text-transform: lowercase;
+    letter-spacing: .1em;
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+}
+.slider__day--slide>.day{
+    font-size: 1.2em;
+}
+.title--time {
+    font-size: 12px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    text-align: center;
+}
+.title--time:last-child{ 
+    animation: timeUp 1s infinite ease-in-out alternate;
+}
+.title--time>span {
+    animation: timeUpSpan 1s infinite ease-in-out alternate;
+}
+@keyframes timeUpSpan { 
+    from {opacity: 1;}  
+    to {opacity: .5;}
+}
+@keyframes timeUp { 
+    from {opacity: 1;}  
+    to {opacity: .6;}
+}
+.time {
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.time li {
+    border-radius: 0;
+    min-height: fit-content;
+    padding: 10px 1em;
+}
+
+.buttons{
+    margin-top: 40px;
+    margin-left: auto;
+    width: fit-content;
+    text-transform: uppercase;
+}
+.buttons *+*{
+    margin-left: 1.5em;
+}
+.buttons .ready {
+    color: var(--threeC);
+}
+.choice{
+    transition: 500ms all;
+}
