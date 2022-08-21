@@ -2,7 +2,7 @@ let dateInput = document.querySelector('#datetime'),
 time;
 const sliderWapper = document.querySelector('.day.choice'),
     d = new Date(),
-    day = ['пн','вт','ср','чт','пт','cб', 'вс'],
+    day = ['вс','пн','вт','ср','чт','пт','cб'],
     hoursWork = [8,10,12,14,16,18,20];
 
 //вывод дня
@@ -13,13 +13,15 @@ function boxDate(number){
     spanDate = document.createElement('span');
     elem.classList.add('slider__day--slide');
     elem.classList.add('swiper-slide');
-    if(hoursWork[hoursWork.length-1 > d.getTime()]){
+    if(hoursWork[hoursWork.length-2] > d.getHours()){
         dateNow = new Date(d.getTime() + number*24*60*60*1000);
     } else {
         dateNow = new Date(d.getTime() + (number+1)*24*60*60*1000);
     }
     
+    
     span.textContent = day[dateNow.getDay()];
+    console.log(dateNow.getDay());
     elem.appendChild(span);
     spanDate.classList.add('day')
     spanDate.textContent = dateNow.getDate();
@@ -72,7 +74,7 @@ let date = document.querySelectorAll('.day.choice>li');
 window.onload = function(){
     window.setInterval(
      function(){
-        document.querySelector('.title--time').innerHTML = d.getHours() + "<span>:</span>" + d.getMinutes();
+        document.querySelector('.title--time').innerHTML = d.getHours() + "<span>:</span>" + (d.getMinutes().length == 1 ? '0'+d.getMinutes() : d.getMinutes());
      }
    , 1000);
    
